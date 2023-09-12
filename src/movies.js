@@ -33,6 +33,8 @@ function scoresAverage(moviesArray) {
     const sumScores = moviesArray.reduce((accumulator, value) => {
         if (value.score !== undefined) {
             return accumulator + value.score
+        } else {
+            return accumulator;
         }
     }, 0);
 
@@ -50,15 +52,9 @@ function dramaMoviesScore(moviesArray) {
         return element.genre.includes("Drama");
     });
 
-    const sumScores = dramaMovies.reduce((accumulator, value) => {
-        return accumulator + value.score
-    }, 0);
+    const avg = scoresAverage(dramaMovies);
 
-    const avgScores = sumScores / dramaMovies.length;
-
-    if (dramaMovies.length === 0) { return 0 };
-
-    return avgScores;
+    return avg;
 }
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
